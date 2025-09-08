@@ -109,7 +109,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
               const SizedBox(height: 16),
 
-              // Back to Login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
