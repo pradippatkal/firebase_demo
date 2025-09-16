@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_demo/ckeck_user.dart';
 import 'package:firebase_demo/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +36,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginPage(),
+      home: CkeckUser(),
+      // home: LoginPage(),
     );
   }
 }
@@ -71,6 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  logOut() async {
+    FirebaseAuth.instance.signOut().then((value) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -81,13 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+
+        // ✅ Add Logout Button
+        actions: [IconButton(icon: const Icon(Icons.logout), tooltip: "Logout", onPressed: logOut)],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
