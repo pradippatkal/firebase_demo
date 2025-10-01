@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_demo/forgot_password.dart';
-import 'package:firebase_demo/main.dart';
+import 'package:firebase_demo/home_page.dart';
 import 'package:firebase_demo/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,10 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         usercredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password)
             .then((value) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyHomePage(title: "HomePage")),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
               return null;
             });
       } on FirebaseAuthException catch (ex) {

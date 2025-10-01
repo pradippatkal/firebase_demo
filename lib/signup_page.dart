@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_demo/main.dart';
+import 'package:firebase_demo/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -29,10 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
         usercredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password)
             .then((value) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyHomePage(title: "HomePage")),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
               return null;
             });
       } on FirebaseAuthException catch (ex) {

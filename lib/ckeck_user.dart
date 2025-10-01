@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_demo/home_page.dart';
 import 'package:firebase_demo/login_page.dart';
-import 'package:firebase_demo/main.dart';
 import 'package:flutter/material.dart';
 
 class CkeckUser extends StatefulWidget {
@@ -15,7 +15,7 @@ class _CkeckUserState extends State<CkeckUser> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      return MyHomePage(title: "MyHomePage1");
+      return HomePage();
     } else {
       return LoginPage();
     }
